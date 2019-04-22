@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "hoge",
+  "alias": "",
+  "builds": [
+    { "src": "dist/public/*", "use": "@now/static" },
+    { "src": "dist/public/js/*", "use": "@now/static" },
+    {
+      "src": "dist/index.js",
+      "use": "@now/node",
+      "config": { "maxLambdaSize": "40mb" }
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.+)", "dest": "/dist/index.js" },
+    { "src": "/", "dest": "/dist/public/index.html" },
+    { "src": "/js/app.js", "dest": "/dist/public/js/app.js" }
+  ]
+}

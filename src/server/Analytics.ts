@@ -1,5 +1,5 @@
-import puppeteer from 'puppeteer'
-import { response } from 'express'
+import puppeteer from 'puppeteer-core'
+import chrome from 'chrome-aws-lambda'
 
 export default class Analytics {
   public static async analyze(
@@ -10,7 +10,9 @@ export default class Analytics {
       pageUrl: path
     }
     const browser: puppeteer.Browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+      args: chrome.args,
+      executablePath: await chrome.executablePath,
+      headless: chrome.headless
     })
     const page: puppeteer.Page = await browser.newPage()
     page.on('error', (error: any) => {

@@ -4,9 +4,9 @@ import bodyParser from 'body-parser'
 
 import api from './Api'
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
-express
+export default express
   .default()
   .use(
     bodyParser.urlencoded({

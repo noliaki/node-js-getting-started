@@ -14,8 +14,8 @@ const path_1 = __importDefault(require("path"));
 const express = __importStar(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const Api_1 = __importDefault(require("./Api"));
-const PORT = process.env.PORT || 5000;
-express
+const PORT = process.env.PORT || 3000;
+exports.default = express
     .default()
     .use(body_parser_1.default.urlencoded({
     extended: true

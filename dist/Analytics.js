@@ -3,14 +3,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const puppeteer_1 = __importDefault(require("puppeteer"));
+const puppeteer_core_1 = __importDefault(require("puppeteer-core"));
+const chrome_aws_lambda_1 = __importDefault(require("chrome-aws-lambda"));
 class Analytics {
     static async analyze(path, option = {}) {
         const result = {
             pageUrl: path
         };
-        const browser = await puppeteer_1.default.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        const browser = await puppeteer_core_1.default.launch({
+            args: chrome_aws_lambda_1.default.args,
+            executablePath: await chrome_aws_lambda_1.default.executablePath,
+            headless: chrome_aws_lambda_1.default.headless
         });
         const page = await browser.newPage();
         page.on('error', (error) => {

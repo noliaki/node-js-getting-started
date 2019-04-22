@@ -1,0 +1,5 @@
+{
+  "extends": ["@noliaki/eslint-config-prettier"],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser"
+}
